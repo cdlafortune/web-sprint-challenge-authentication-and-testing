@@ -3,14 +3,6 @@ const bcrypt = require('bcryptjs');
 const users = require('./auth-model.js');
 const {authenticate, validateUser} = require('./authenticate-middleware');
 
-router.get('/users', authenticate, async (req, res, next) => {
-  try{
-    res.json(await users.find());
-  } catch(err){
-    next(err);
-  }
-});
-
 router.post('/register', validateUser, async (req, res, next) => {
   try {
     const {username, password} = req.body;
@@ -56,18 +48,18 @@ router.post('/login', validateUser, async (req, res, next) => {
   }
 });
 
-router.get("/logout", authenticate, async (req, res, next) => {
-	try {
-		req.session.destroy((err) => {
-			if (err) {
-				next(err)
-			} else {
-				res.status(204).end()
-			}
-		})
-	} catch (err) {
-		next(err)
-	}
-})
+// router.get("/logout", authenticate, async (req, res, next) => {
+// 	try {
+// 		req.session.destroy((err) => {
+// 			if (err) {
+// 				next(err)
+// 			} else {
+// 				res.status(204).end()
+// 			}
+// 		})
+// 	} catch (err) {
+// 		next(err)
+// 	}
+// })
 
 module.exports = router;

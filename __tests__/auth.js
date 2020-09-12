@@ -48,5 +48,5 @@ describe('authentication route tests', () => {
             });
 
         expect(res.statusCode).toBe(401);
-    })
-})
+    });
+});
