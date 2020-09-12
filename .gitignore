@@ -1,3 +1,6 @@
+#env 
+.env
+
 # Mac Cruft
 .DS_Store
 
